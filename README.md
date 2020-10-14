@@ -1,2 +1,2 @@
 # javastudy
-java study directory
+java study directory hello
