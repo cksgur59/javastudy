@@ -11,7 +11,7 @@
 3. 자바 프로젝트를 저장할 수 있는 공간
    -workspace_java
 
-4. eclipse의 구조
+4. eclipse의 구조 1
    -window -show view-other-package explorer 추가
    -(perspective) java ee 에서 java (se) 로 변경
    -이클립스 우측 상단의 [open perspective]를 클릭하여 java perspective 선택
