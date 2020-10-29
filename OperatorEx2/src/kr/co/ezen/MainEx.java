@@ -85,9 +85,9 @@ public class MainEx {
 //		
 //		t5.h3();
 		
-		t5.h5(50);
+		t5.h5(10);
 		
-		
+		t5.h6(10);
 		
 		
 		

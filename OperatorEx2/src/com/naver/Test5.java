@@ -40,18 +40,21 @@ public class Test5 {
 			}
 			System.out.println("");
 		}
+	}
+	
+	public void h6(int c) {
+		char a ='*';
+		char b =' ';
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		for(int i=0;i<c;i++) {
+			for(int j=0;j<i;j++) {
+				System.out.print(b);
+			}
+			for(int k=1;k<=(((c-i)*2)-1);k++) {
+				System.out.print(a);
+			}
+			System.out.println("");
+		}
 	}
 	
 	
