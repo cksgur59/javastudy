@@ -593,4 +593,35 @@ final :
 
 
 
+Object클래스 : 자바 최상위 부모클래스
+
+주요 3메서드
+일반적으로 상황에 맞게 이 3 개의 메서드를 오버라이딩을 해줌
+상황: 객체 비교를 해야 하는 상황
+1.toString( ) : sysout(msg.toString( ))
+2.hashCode( ) : 객체가 어디에 저장이 되어 있는지 알려주는 메서드
+3.equals( ) : 객체 동등비교 기능을 제공하는 메서드
+
+
+
+접근제한자 (=접근제어지시자)
+-public : 프로젝트 어디에서든 접근 가능
+
+-protected : 같은 패키지에서만 접근 가능. 단, 상속관계가 
+성립할 때는 패키지가 달라도 접근 할 수 있다.
+
+-defult : 같은 패키지에서만 접근 가능
+
+-private : 같은 클래스에서만 접근 가능
+
+==
+변수/상수 에 사용 할 수 있는 접근제한자 : public , private , defult , protected
+
+메서드에 사용 할 수 있는 접근제한자 : public , private , defult , protected
+
+클래스에 사용 할 수 있는 접근제한자 : public , defult
+
+
+
+
 
