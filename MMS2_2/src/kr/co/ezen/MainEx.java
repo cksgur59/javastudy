@@ -16,30 +16,26 @@ public class MainEx {
 		
 		boolean ist = true;
 		int comlsc =0;
-		int restart = 0;
 		
 		while (ist) {
 			System.out.println("매뉴를 선택해 주세요");
 			for (int i = 0; i < coml.size(); i++) {
 				System.out.print(i+"."+coml.get(i));
-				if(i!=coml.size()) System.out.print(" , ");
+				if(i<coml.size()-1) System.out.print(" , ");
 			}
 			System.out.println();
 			try {
 				comlsc = sc.nextInt();
 				sc.nextLine();
+				coml.get(comlsc).cmi(sc);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println("숫자만 입력해 주세요.");
-				break;
-			}
+				System.out.println("1~4까지의 숫자만 입력해 주세요.  확인 (엔터)");
+				sc.nextLine();
+			} 
 			
-			coml.get(comlsc).cmi(sc);
+			
 			
 		}
-		
-		
-		
 		
 		
 		

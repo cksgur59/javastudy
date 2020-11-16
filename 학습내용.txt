@@ -726,3 +726,48 @@ Calendar - roll( )
 ========================================================
 
 
+
+
+자바 컬랙션 프레임워크 = 상자
+Generic(제네릭) 상자에 무엇이 담겨있는지 알려줌
+                      상자에서 내용물의 이름을 적는 것 
+
+자바컬렉션프레임워크<참조자료형>
+
+List<Integer> list = new ArrayList<Integer>();
+  list.add(new Integer(3));
+
+List
+
+List = ArrayList
+
+
+
+Set : 데이터의 중복을 허용하지 않습니다.  equals( ) 로 동등성 비교
+       입력순서와 출력순서 사이에 상관관계가 없다.
+
+Set = HashSet
+Set<참조자료형> set = new HashSet<참조자료형>( );
+
+add( ) , size( ) , remove( ) , clear( ) 
+get( ) X =(인덱스가 없다.) --> 대신 iterator( ) 사용
+
+
+- remove( )
+List 에서 remove( int idx) , remove (Object obj)
+Set 에서는 index 가 존재 하지 않기때문에 remove (Object obj) 만존재..
+
+iterator( ) : Iterator 인터페이스 자료형으로 데이터 반환
+---반환자.
+while문을 이용해서 set 데이터 획득..
+eclipse에서도 이를 지원합니다.
+
+Iterator<Integer> it = set.iterator();
+		while (it.hasNext()) {
+			Integer integer = it.next();
+			System.out.println(integer);
+		}
+
+// 적은 숫자부터 정렬기능
+Comparable 인터페이스 구현 후
+ -Collections.sort(list);
