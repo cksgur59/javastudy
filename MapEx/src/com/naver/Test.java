@@ -1,9 +1,12 @@
 package com.naver;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Test {
 	
@@ -26,7 +29,26 @@ public class Test {
 		int km = map.get("서울과 부산간의 거리");
 		System.out.println(km);
 		
+		map.replace("서울과 부산간의 거리", 280);
+		
 		System.out.println(map);
+		
+		Set<String> set = map.keySet();
+		System.out.println(set);
+		Iterator<String> it = set.iterator();
+		String key=null;
+		while (it.hasNext()) {
+			key = (String) it.next();
+			int val = map.get(key);
+			System.out.println(key);
+		}
+		Collection<Integer> ci =map.values();
+		Iterator<Integer> cit = ci.iterator();
+		while (cit.hasNext()) {
+			Integer val = (Integer) cit.next();
+			System.out.println(val);
+		}
+		System.out.println(key+" : " +ci);
 	}
 	
 	public void me2() {
@@ -40,7 +62,16 @@ public class Test {
 		System.out.println(map.get(0));
 		System.out.println(map.get(1));
 		System.out.println(map.get(2));
+		map.replace(1, "kim");
 		System.out.println(map);
+		
+		Set<Integer> set = map.keySet();
+		Iterator<Integer> it = set.iterator();
+		while (it.hasNext()) {
+			Integer key = (Integer) it.next();
+			String val = map.get(key);
+			System.out.println(key);
+		}
 
 	}
 	
@@ -67,6 +98,14 @@ public class Test {
 		
 		System.out.println(map.get("기아차"));
 		System.out.println(map);
+		
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String key =  it.next();
+			List<String> val =map.get(key);
+			System.out.println(key+" : "+val);
+		}
 		
 		
 	}
@@ -115,6 +154,9 @@ public class Test {
 		}else {
 			System.out.println(msg);
 		}
+		
+		map.replace("txt", "텍스트 파일");
+		System.out.println(map);
 	}
 	
 	public void me51(String filename) {

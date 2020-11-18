@@ -771,3 +771,80 @@ Iterator<Integer> it = set.iterator();
 // 적은 숫자부터 정렬기능
 Comparable 인터페이스 구현 후
  -Collections.sort(list);
+
+
+
+========================================================
+========================================================
+
+
+start( )메서드를 호출하면
+그때 스레드가 생성됩니다.
+스레드들간에 데이터가 공유됩니다.
+그러나
+stack 영역에 데이터는 공유 불가.
+
+스레드가 생성되면, 스레드는 runnalbe 상태가 됩니다.(곧바로 실행되는게 아님)
+
+스레드의 생애주기(Life cycle)
+생성  =  runnalbe 상태  ->  start( )호출 = run( ) 실행됨  ->  dead 소멸.
+
+
+join( )(스레드의 메서드중 하나)
+-이 메서드를 호출한 스레드는 현재의 영역을 관리하는 스레드보다 먼저 dead상태로 빠진다.
+
+synchronized (스레드 동기화 키워드)
+사용법
+public synchronized void addNum(int n) {
+		num += n;
+	}
+
+synchronized 는 자물쇠...
+자물쇠로 잠겨있습니다.
+자물쇠를 열고 들어가야 코드가 실행됩니다 열쇠는 해당 클래스로 만들어진 객체가 열쇠.
+
+하나가 열쇠를 사용하고 있으면, 다른 곳에서는 작업을 못하고 있는 경우가 발생합니다.
+
+
+
+순차적 동기화 방법
+public String getTodayPost() {
+		if(!isok) {
+			synchronized (this) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return todayPost;
+	}
+	public void setTodayPost(String todayPost) {
+		this.todayPost = todayPost;
+		
+		isok = true;
+		
+		synchronized (this) {
+			notify();
+		}
+	}
+
+
+
+========================================================
+========================================================
+
+
+
+Stream: 화살표..
+1. 전송되는 데이터의 크기
+- ~Stream: 바이트스트림, 1바이트씩전송
+- ~ er.문자스트림 , 2 바이트씩 전송
+
+
+
+2. 특별한 기능이 있는지 여부에 따라---필터스트림
+    (장치와 직접적으로 연결이 되는지 여부)---노드스트림
