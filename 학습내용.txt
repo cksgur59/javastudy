@@ -848,3 +848,33 @@ Stream: 화살표..
 
 2. 특별한 기능이 있는지 여부에 따라---필터스트림
     (장치와 직접적으로 연결이 되는지 여부)---노드스트림
+
+
+========================================================
+========================================================
+
+
+1. 전송되는 데이터의 크기
+- 바이트스트림 : 1바이트씨ㅣㄱ 전송 ,All, 멀티미디어 파일, ~Stream
+- 문자스트림 : 2바이트씩 전송, text, ~er
+-------------------
+바이트스트림:
+입력과 관련된 최상위 부모클래스:InputStream
+출력과 관련된 최상위 부모클래스:OutputStream
+-------------------
+1.Stream 변수선언
+2.try~catch~finally구문을 만듬
+3.finally 구문에 try~catch
+4.finally의 try에서 close( )호출, catch구현
+5.원래 catch구현
+6.try 구현: 스트림 객체 만듬.
+
+
+sqlplus
+
+sqlpls ".as sysdba"
+
+sql> recover database;
+sql> alter fatavase open;
+sql> shutdown immediate;
+sql> startup;
