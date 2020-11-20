@@ -56,6 +56,8 @@ char
 Dog클래스: 참조자료형
 
 
+
+
 자료형: Dog
 변수명 dog
 값:  알아서 넣으세요.
@@ -878,3 +880,55 @@ sql> recover database;
 sql> alter fatavase open;
 sql> shutdown immediate;
 sql> startup;
+
+===================================================
+===================================================
+
+=============================================
+=============================================
+
+sqlplus
+system sys1234
+CREATE USER ezen IDENTIFIED BY ezen;
+show user
+conn system/sys1234
+GRANT CONNECT, RESOURCE, DBA TO ezen;
+REVOKE CONNECT, RESOURCE, DBA FROM ezen;
+
+객체를 생성하고 , 수정 , 삭제 하는 SQL문을
+DDL
+Create, alter , drop
+
+보안적인 요소를 담고 있는 SQL문
+DCL
+Grant , Revoke
+
+TCL *
+Commit, Rolback
+
+DMl *
+insert, select , update , delete
+
+-------------
+ CREATE TABLE tbl_member(
+  2  id varchar2(6),
+  3  name varchar2(15),
+  4  age number
+  5  );
+
+
+desc tbl_member
+
+DROP TABLE tbl_member;
+
+INSERT INTO member (mid, name, job, birth) VALUES ('M004','bark','b','2000-12-17');
+INSERT INTO member VALUES ('M005','bak','a','1969-05-18');
+
+
+SELECT * FROM member;
+
+rollback;
+
+sql문 입력할 때는 대소문자 구분하지 않음.
+데이터는 대소문자 구분함,
+숫자를 제외한 모든 자료형은 '작은 따옴표'에 넣어서 입력.
