@@ -13,7 +13,8 @@ public class MainEx {
 //		long b = System.currentTimeMillis();
 //		System.out.println(b-a);
 //		t1.me41();
-		t1.me5();
+//		t1.me5();
+		t1.me6();
 	}
 	
 }

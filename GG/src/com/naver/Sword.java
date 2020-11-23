@@ -17,6 +17,12 @@ public class Sword extends Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void img() {
+		// TODO Auto-generated method stub
+		System.out.println("Д®Бъ");
+	}
+
 	
 	
 	

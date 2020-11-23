@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.concurrent.locks.Condition;
 
@@ -435,10 +437,7 @@ public class Test {
 			int what = -1;
 			
 			byte[] arr = new byte[1024];
-			
-			
-			
-			
+
 			while(true) {
 				int leght = in.read(arr);
 				if(leght == -1) break;
@@ -459,7 +458,48 @@ public class Test {
 		}
 	}
 	
-	
+	public void me6() {
+		
+		MemberDTO dto = new MemberDTO("a001", "kim", 20);
+		
+		OutputStream out = null;
+		ObjectOutputStream oos = null;
+		
+		InputStream in = null;
+		ObjectInputStream ois = null;
+		
+		try {
+			out = new FileOutputStream("obj.txt");
+			oos =new ObjectOutputStream(out);
+			
+			oos.writeObject(dto);
+			System.out.println("::::::::::::::::::::::::::");
+			
+			in = new FileInputStream("obj.txt");
+			ois = new ObjectInputStream(in);
+			Object obj =  ois.readObject();
+			if(obj instanceof MemberDTO) {
+			
+			}
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (oos != null) oos.close();
+				if (ois != null) ois.close();
+				if (out != null) out.close();
+				if (in != null) in.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
 	
 	
 	

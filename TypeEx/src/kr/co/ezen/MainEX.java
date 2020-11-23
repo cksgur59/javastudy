@@ -60,6 +60,8 @@ public class MainEX {
 		
 		String aaaa = new String("d7");
 		String bbbb = new String("good");
+		String cccc = new String("hello");
+		
 		
 		boolean a1 = true;
 		boolean a2 = false;
@@ -102,13 +104,15 @@ public class MainEX {
 		char d2 = 'd';
 		byte d3 = -128;
 		short d4 = -32768;
-		int d5 = 2100000000;
-		long d6 = 9223372030000000000L;
+		int d5 = -2147483648;
+		long d6 = -9223372036854775808L;
 		float d7 = 3.123456F;
 		double d8 = 3.123456789054321;
 		System.out.println(d6);
 		
 		boolean e1 = false;
+		System.out.println(cccc);
+
 	
 		
 		

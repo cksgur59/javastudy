@@ -21,6 +21,17 @@ public class Bow extends Weapon {
 	public String toString() {
 		return getName();
 	}
+
+	@Override
+	public void img() {
+		// TODO Auto-generated method stub
+		System.out.println("화살이 빗발칩니다.");
+		
+	}
+	
+	
+	
+	
 	
 	
 }

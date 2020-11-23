@@ -8,7 +8,7 @@ public class Dog {
 		this.SR = sr;
 	}
 
-	public void carl() {
+	public void sr() {
 		if (SR==1){
 			System.out.println("1. hello");
 		}

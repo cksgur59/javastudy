@@ -7,6 +7,7 @@ public class DB {
 
 	public static List<MemberDTO> memdb = new ArrayList<MemberDTO>();
 	public static List<MonsterDTO> mondb = new ArrayList<MonsterDTO>();
+	public static List<UserDTO> userdb = new ArrayList<UserDTO>();
 	
 	
 	public List<CommadMemberInter> commandlist() {
@@ -23,13 +24,13 @@ public class DB {
 	public List<CommadMonsterInter> commandMonList() {
 		List<CommadMonsterInter> comml = new ArrayList<CommadMonsterInter>();
 		
-		
-		
-		
-		
-		
+		comml.add(new MonGobrin());
+		comml.add(new MonOrger());
+		comml.add(new MonDvil());
 		
 		return comml;
 	}
+	
+	
 	
 }

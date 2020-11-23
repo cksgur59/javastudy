@@ -1,5 +1,6 @@
 package kr.co.ezen;
 
+import com.naver.Cat;
 import com.naver.Dog;
 import com.naver.MethodTest3;
 
@@ -35,6 +36,10 @@ public class MainEx {
 		
 		int asdf = dogi.dog3(20);
 		System.out.println(asdf);
+		
+		
+		Cat catt = new Cat();
+		int recat = catt.bobobo();
 		
 
 	}

@@ -93,7 +93,7 @@ public class Test {
 	}
 	
 	public void me5(int n) {
-		char a = 'O';
+		char a = '*';
 		
 		for (int i = 0 ; i <n ; i++) {
 			System.out.print(a);
@@ -184,20 +184,36 @@ public class Test {
 		}
 	}
 	
-	public void star(int a) {
-		int count =0;
-		piramid(a/4);
-		for (int i=1 ; i <(a/4)+1; i++) {
-			me51(i-1);
-			me5((a*2)-i);
-			System.out.println();
-			count++;
+	public void me7(int num) {
+		for (int i = 0; i < 10; i++) {
+			if(num % 3 == 0) {
+				System.out.println("3의 배수가 검출되었습니다. 가장 가까운 반복을 중단합니다.");
+				break;
+			}
+			System.out.println(i);
 		}
-		
-		for (int j = 1; j <(a/4)+1; j++) {
-			me51(count-j);
-			me5((a*2)-j);
-			System.out.println();
+	}
+	
+	public void me71() {
+		for (int i = 10; i>=0; i--) {
+			System.out.println("외부 for문 시작");
+			
+			for (int j=100; j <105; j++ ) {
+				if(i%2 == 0) {
+					break;
+				}
+				System.out.println(i);
+			}
+			System.out.println("외부 for문 종료");
+		}
+		System.out.println(1111);
+	}
+	
+	public void me8() {
+		for (int i = 0; i <= 10; i++) {
+			if (i%5==0) continue;
+			
+			System.out.println(i);
 		}
 	}
 	

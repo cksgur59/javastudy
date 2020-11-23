@@ -21,14 +21,18 @@ public class MainEx {
 //		t1.printStar(12);
 //		t1.printStar2(10);
 //		t1.halfDiamond(6);
-		t1.gugudan2();
+//		t1.gugudan2();
 //		t1.isSossu2(13);
 //		t1.piramid(5);
 //		t1.piramid2(5);
 //		t1.diamond(17);
 //		t1.star(20);
-
 		
+		Test t2 = new Test();
+		
+//		t2.me7(6);
+//		t2.me71();
+		t2.me8();
 		
 		
 		

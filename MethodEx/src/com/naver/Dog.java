@@ -18,5 +18,9 @@ public class Dog {
 		System.out.println("=========");
 		return 50;
 	}
+	
+	public float dog4() {
+		return 3.14F;
+	}
 
 }

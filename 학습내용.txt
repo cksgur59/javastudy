@@ -932,3 +932,76 @@ rollback;
 sql문 입력할 때는 대소문자 구분하지 않음.
 데이터는 대소문자 구분함,
 숫자를 제외한 모든 자료형은 '작은 따옴표'에 넣어서 입력.
+
+========================================================
+=======================================================
+
+update member set name = 'lee' where mid = 'm004';
+
+update member set job = 'd', birth = '88/05/03' where mid = 'm001';
+
+DELETE FROM member where job = 'a';
+
+JAVA - build path -classpath variable
+jdk로 되어있는지 확인 (JRE_LIB가)
+
+이클립스에서 오라클 연동 작업을 하기 위해서
+
+1.클래스패스 확인
+JAVA - build path -classpath variable
+jdk로 되어있는지 확인 (JRE_LIB가)
+
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+ojdbc6복사
+
+C:\Program Files\Java\jdk1.8.0_261\jre\lib\ext
+에붙혀넣기
+
+이클립스에서
+whindow - show view - other -data mangemet \ database connections 폴더 우클릭-
+new - oracle 클릭 - 나침판 클릭 - 
+1탭) oralc thin driver 11
+2탭) 하나 제거 - 아까붙혀넣기한거 선택
+3탭) jdbc:oracle:thin:@server:1521:db 부분 수정이 필요함
+3탭) - server부분 localhost로 수정
+3탭) - db 를 xe 밑에줄 db도 xe로 수정
+3탭) 패스워드 아이디 입력
+
+DISTINCT 중복 삭제
+select DISTINCT name 성씨 from test
+
+오름차순
+select * from test order by age asc
+내림차순
+select * from test order by age desc
+
+별명 입력 (as 생략 가능)
+select name as 이름 , age as 나이 from test
+
+한가지 값만 생성
+insert into test (age) values (55)
+
+name(이름),age(나이) 컬랙션에 null이 아닌 age 값을 내림차순으로 정렬하고,이름이 같으면 오름차순으로 정렬시키기
+select name 이름,age 나이 from test where name is not null order by age asc, name desc
+
+원하는 값만 골라서 출력
+select * from test where age in (20,23,40,50)
+select * from test where age not in (20,23,40,50)
+
+
+between a and b 사용 하면 위와 아래가 같은 결과
+select * from test where age >=25 and age <= 47
+select * from test where age between 25 and 47
+
+
+원하는 글자가 들어간 항목 찾기 (_)는 하나당 한글자[글자수를 알고 들어간 글자를 알때]
+select * from test where name like 'k__' 
+
+글자수를 모른다면 (%)
+select * from test where name like '%o'
+select * from test where name like '%m%'
+
+
+테이블 명 대신 select 문 넣기
+게시판 밑에 페이지 숫자
+select * from (select * from test where age >20) where name like 'k__'

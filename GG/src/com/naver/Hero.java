@@ -24,8 +24,12 @@ public class Hero {
 	}
 	
 	public void changeWeapon(int a) {
-		if (a >= weapons.length|| a <0) a = weapons.length-1;
-		w = weapons[a];
+		try {
+			w = weapons[a];
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			a =  weapons.length-1;
+		}
 		System.out.println(w+" 로 변경되었습니다.");
 	}
 	
