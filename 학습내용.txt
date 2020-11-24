@@ -1005,3 +1005,111 @@ select * from test where name like '%m%'
 테이블 명 대신 select 문 넣기
 게시판 밑에 페이지 숫자
 select * from (select * from test where age >20) where name like 'k__'
+
+
+
+========================================================
+========================================================
+
+기본키 설정
+기본키를 설정하면, 
+기본키에 대한 중복을 허용하지 않는다.(unique constraint)유니크 제약조건
+아래 방법으로 id를 지정하면 항목을 추가할때 id가 중복되는것을 막을 수 있다.
+기본키를 설정하면
+기본키에 대해 NOT NULL 제약조건이 추가 된다.(id가 비어있다면 추가 불가능)
+
+방법 1) 기본을 알면 아래는 파생
+alter table member2 add constraint pk_member2_id primary key(id)
+방법 2)
+create table test2(
+id varchar2(6) primary key,
+age number(3)
+)
+방법3)
+CREATE TABLE test3(
+id VARCHAR2(6),
+age NUMBER(3),
+constraint pk_test3_id primary key(id)
+)
+
+----------------
+
+외래키 - fore -foreign key = fk
+
+당신이 종하하는 음식을 다음 중에서만 고르시오.
+1. 갈비
+2. 떢볶이
+3. 된장찌개
+4. 김치찌개
+
+나는 피자... 이렇게 다른걸 고르는 것을 막아야 한다
+1~4중에서만 선택하라고 했는데, 피자를 선택하다니...
+이런 일 없게 하자.
+
+외래키(foreign key=fk)가 되려면, 반드시 부모 테이블의 기본키(pk)이여야 한다.
+alter table DEP add constraint pk_DEP_edep primary key(edep)
+
+** alter table employee add constraint fk_employee_edep FOREIGN key(edep) references DEP(edep) **
+
+외래키를 만드려면 우선 부모 테이블 부터 만들어 주자.
+
+
+---------------------------------------------------------------------------
+
+public class Test {
+	
+	private final String DRIBER_NAME = "oracle.jdbc.OracleDriver";
+
+	public Test() {
+		// full package : 패키지.클래스
+		// kr.co.ezen.test (풀패키지명)
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			System.out.println("드라이버 로딩 성공");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("드라이버 로딩 실패");
+			e.printStackTrace();
+		}
+	}
+	
+	public void me1() {
+		
+	}
+	
+}
+
+JRE System Library - ojdbc6.jar - oracle.jdbc - OracleDriver.class - copy Q~~ name 해서
+Class.forName("oracle.jdbc.OracleDriver"); 에 " "안에 붙혀넣기
+
+public void me1() {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO member (mid,name,job,birth) VALUES (?,?,?,?)";
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ezen", "ezen");
+			System.out.println("커넥션 연결 성공");
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("preparedStatement 생성 성공");
+			
+			pstmt.setString(1, "m001");
+			pstmt.setString(2, "kim");
+			pstmt.setString(3, "c");
+			pstmt.setDate(4, new Date(Calendar.getInstance().getTimeInMillis()));
+			pstmt.execute();
+		} catch (Exception e) {
+			System.out.println("커넥션 연결 실패");
+			System.out.println("preparedStatement 생성 실패");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}

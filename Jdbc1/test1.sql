@@ -125,3 +125,172 @@ select  r,name , age from (select rownum r , name , age from test) where r betwe
 select  r, name , age from (select rownum r, name , age from test) where r between 2 and 4 order by age asc
 select r, name , age from (select rownum r , name , age from test) where r between 2 and 4 order by age asc
 select r, name , age from (selecy rownum r , name , age from test) where r between 2 and 4 order by age asc
+
+DB에 데이터를 저장한 상태에서
+칼럼 하나만을 이용해서 
+특정 레코드 하나만을 조회하고 싶어
+
+
+create table member2(
+id varchar2(6),
+name varchar2(6),
+age number(3)
+)
+
+alter table member2 add constraint pk_member2_id primary key(id)
+
+
+insert into member2 values ('m001','kim',30)
+insert into member2 values ('m002','kim',30)
+insert into member2 values ('m003','kim',30)
+insert into member2 values ('m004','kim',30)
+insert into member2 values ('m005','kim',30)
+insert into member2 values ('m006','kim',30)
+insert into member2 values ('m007','kim',30)
+
+insert into member2 (id,name, age) values ('m008','kim',20)
+
+
+select * from member2 
+
+delete from member2
+commit
+
+select * from member2 where id = 'm004'
+select * from member2 order by id asc
+
+select * from member
+alter table member add constraint pk_member_mid primary key(mid)
+
+create table test2(
+id varchar2(6) primary key,
+age number(3)
+)
+
+CREATE TABLE test3(
+id VARCHAR2(6),
+age NUMBER(3),
+constraint pk_test3_id primary key(id)
+)
+
+당신이 종하하는 음식을 다음 중에서만 고르시오.
+1. 갈비
+2. 떢볶이
+3. 된장찌개
+4. 김치찌개
+
+나는 피자... 이렇게 다른걸 고르는 것을 막아야 한다
+1~4중에서만 선택하라고 했는데, 피자를 선택하다니...
+이런 일 없게 하자.
+rollback
+CREATE TABLE employee(
+eid VARCHAR2(6),
+ename VARCHAR2(6),
+edep VARCHAR2(9)
+)
+
+
+DROP TABLE employee
+//edep에는 인사부/통보부/연구실/영업부 만 들어갈 수 있다.
+
+INSERT INTO employee (eid,ename,edep) values ('e001','kim','인사부')
+INSERT INTO employee (eid,ename,edep) values ('e002','lee','통보부')
+INSERT INTO employee (eid,ename,edep) values ('e003','park','연구실')
+INSERT INTO employee (eid,ename,edep) values ('e004','choi','영업부')
+INSERT INTO employee (eid,ename,edep) values ('e005','jung','비서실')
+delete from employee
+select * from employee
+
+
+alter table employee add constraint pk_employee_edep primary key(edep)
+
+create table depart(
+edep VARCHAR2(9)
+)
+
+alter table depart add constraint pk_depart_edep primary key(edep)
+
+alter table employee add constraint fk_employee_edep FOREIGN key(edep) references depart(edep)
+
+insert into depart values ('인사부')
+insert into depart values ('통보부')
+insert into depart values ('연구실')
+insert into depart values ('영업부')
+commit
+
+insert into employee (eid, ename ) values ('e006','kim')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create table bugerp(
+pname VARCHAR2(12)
+)
+
+alter table bugerp add constraint pk_bugerp_pname primary key(pname)
+
+insert into bugerp values ('멕도날드')
+insert into bugerp values ('롯데리아')
+insert into bugerp values ('버거킹')
+insert into bugerp values ('맘스터치')
+
+create table bugerm(
+pname VARCHAR2(12),
+bname VARCHAR2(12),
+price NUMBER(10)
+)
+
+
+alter table bugerm add constraint fk_bugerm_pname FOREIGN key(pname) references bugerp(pname)
+alter table bugerm add constraint pk_bugerm_bname primary key(bname)
+
+insert into bugerm values ('멕도날드', '상하이',7500)
+insert into bugerm values ('맘스터치', '싸이버거',8000)
+insert into bugerm values ('롯데리아', '불고기',6800)
+insert into bugerm values ('버거킹', '몬스터X',9800)
+
+SELECT pname 브랜드,bname 햄버거이름,price 가격 from bugerm
+
+
+
+create table gc (
+name VARCHAR2(15)
+)
+
+alter table gc add constraint pk_gc_name primary key(name)
+
+insert into gc values ('넥슨')
+insert into gc values ('펄어비스')
+insert into gc values ('넷마블')
+insert into gc values ('NC')
+
+create table game(
+cname VARCHAR2(15),
+gname VARCHAR2(18),
+userp NUMBER(10)
+)
+
+alter table game add constraint fk_game_cname foreign key(cname) references gc(name)
+alter table game add constraint pk_game_gname primary key(gname)
+
+insert into game values ('넷마블', '세븐나이츠',7500)
+insert into game values ('펄어비스', '검은사막',8000)
+insert into game values ('넥슨', '메이플',6800)
+insert into game values ('NC', '리니지',9800)
+
+select * from game
+
+select * from member
+DELETE from member where name = 'kim'
+select * from member where name = 'kim'
