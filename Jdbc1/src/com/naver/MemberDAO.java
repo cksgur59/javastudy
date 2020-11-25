@@ -2,8 +2,11 @@ package com.naver;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.Driver;
+import java.sql.DriverAction;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -60,12 +63,109 @@ public class MemberDAO {
 		
 		
 	}
+	public MemberDTO selectByMid(String name) {
+		MemberDTO dto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT mid 이름, job 직업 , birth 생일 FROM member WHERE name = ?";
+		ResultSet rs = null;
+		try {
+			conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);	
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String mid = rs.getString("이름");
+				String job = rs.getString("직업");
+				Date birth = rs.getDate("생일");
+				dto = new MemberDTO(name, mid, job, birth);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dto;
+		
+		
+	}
+	
+	
+	
 	public List<MemberDTO> select(){
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT * FROM member";
+		ResultSet rs = null;
+		try {
+			conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String name = rs.getString("name");
+				String mid = rs.getString("mid");
+				String job = rs.getString("job");
+				Date birth = rs.getDate("birth");
+				
+				MemberDTO dto = new MemberDTO(name, mid, job, birth);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 		return list;
 	}
 	
 	public void update(MemberDTO dto) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE member SET mid = ?,job =? , birth = ? WHERE name = ?";
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","ezen","ezen");
+			System.out.println("커넥션 성공");
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("pstmt 성공");
+			
+			pstmt.setString(4, dto.getName());
+			pstmt.setString(2, dto.getJob());
+			pstmt.setDate(3, dto.getBirth());
+			pstmt.setString(1, dto.getMid());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("커넥션 실패");
+			System.out.println("pstmt 실패");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
 		
 	}
 	
@@ -97,6 +197,9 @@ public class MemberDAO {
 		}
 		
 	}
+
+
+	
 	
 	
 	

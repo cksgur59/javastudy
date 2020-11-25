@@ -1113,3 +1113,60 @@ public void me1() {
 		}
 		
 	}
+
+
+========================================================
+========================================================
+
+
+
+executeUpdate( ) ----------------
+executeQ
+
+
+
+
+
+		MemberDTO dto = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT * FROM member WHERE name = ?";
+		ResultSet rs = null;
+		
+		try {
+			
+			conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);
+			pstmt= conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			// rs에 저장된 데이터는 최대 1개(mid가 primary 키이기때문)
+			
+			if (rs.next()) {
+				String job = rs.getString("job");
+				String mid = rs.getString("mid");
+				Date birth = rs.getDate("birth");
+				
+				dto = new MemberDTO(name, mid, job, birth);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	
+		return dto;
+	

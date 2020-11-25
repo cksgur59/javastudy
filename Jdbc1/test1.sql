@@ -221,19 +221,6 @@ commit
 insert into employee (eid, ename ) values ('e006','kim')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 create table bugerp(
 pname VARCHAR2(12)
 )

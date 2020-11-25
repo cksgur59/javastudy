@@ -17,16 +17,14 @@ public class MainEX {
 		
 		MemberDAO mdao = new MemberDAO();
 		
-		MemberDTO dto = new MemberDTO();
+		MemberDAO dao2 = new MemberDAO();
 		
-//		mdao.insert(dto);
+		MemberDTO odto = dao2.selectByMid("m005");
 		
-//		mdao.delete(new MemberDTO("m009", null, null, null));
+		MemberDTO dto =new MemberDTO("m005", "Âù", odto.getJob(), odto.getBirth());
 		
-		test2 t2 = new test2();
+		dao2.update(dto);
 		
-//		t2.insert(new MemberDTO("m009", "qwe", "x", new java.sql.Date(Calendar.getInstance().getTimeInMillis())));
-		t2.delete(new MemberDTO("m009", null, null, null));
 	}
 	
 }
