@@ -1236,14 +1236,22 @@ HeroDAO = [ insert , select , update , delete ]
 
 초기 입력시에만 사용
 ++++++++++++++++++++++++++++++
-MonsterDTO = [ mid , hp , exp , power ]
+MonsterDTO = [ mid , name	,hp , exp , power ]
 
-MonsterDAO = [ insert ]
+MonsterDAO = [ insert ] + select
 
 WeaponDTO - [ mid , name , power ]
 
-WeaponDAO =  [ insert ]
+WeaponDAO =  [ insert ] + select + selectbymid
 ++++++++++++++++++++++++++++++
 
+MonsterDAO = select
+
+WeaponDAO = select + selectbymid
+
+MemberDTO =  [ id ,password ,name , age , birth , userhero ]
+HeroDTO = [ mid , lv ,  hp , exp , power , weapon ]
+MonsterDTO = [ mid , name	,hp , exp , power ]
+WeaponDTO - [ mid , name , power ]
 
 
